@@ -14,7 +14,140 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      profiles: {
+        Row: {
+          avatar_url: string | null
+          bio: string | null
+          created_at: string
+          full_name: string | null
+          id: string
+          updated_at: string
+        }
+        Insert: {
+          avatar_url?: string | null
+          bio?: string | null
+          created_at?: string
+          full_name?: string | null
+          id: string
+          updated_at?: string
+        }
+        Update: {
+          avatar_url?: string | null
+          bio?: string | null
+          created_at?: string
+          full_name?: string | null
+          id?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      projects: {
+        Row: {
+          archived: boolean
+          color: string
+          created_at: string
+          deadline: string | null
+          description: string | null
+          id: string
+          owner_id: string
+          priority: string
+          status: string
+          tags: string[]
+          title: string
+          updated_at: string
+        }
+        Insert: {
+          archived?: boolean
+          color?: string
+          created_at?: string
+          deadline?: string | null
+          description?: string | null
+          id?: string
+          owner_id: string
+          priority?: string
+          status?: string
+          tags?: string[]
+          title: string
+          updated_at?: string
+        }
+        Update: {
+          archived?: boolean
+          color?: string
+          created_at?: string
+          deadline?: string | null
+          description?: string | null
+          id?: string
+          owner_id?: string
+          priority?: string
+          status?: string
+          tags?: string[]
+          title?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      tasks: {
+        Row: {
+          actual_hours: number | null
+          completed_at: string | null
+          created_at: string
+          deadline: string | null
+          description: string | null
+          estimated_hours: number | null
+          id: string
+          labels: string[]
+          owner_id: string
+          position: number
+          priority: string
+          project_id: string | null
+          status: string
+          title: string
+          updated_at: string
+        }
+        Insert: {
+          actual_hours?: number | null
+          completed_at?: string | null
+          created_at?: string
+          deadline?: string | null
+          description?: string | null
+          estimated_hours?: number | null
+          id?: string
+          labels?: string[]
+          owner_id: string
+          position?: number
+          priority?: string
+          project_id?: string | null
+          status?: string
+          title: string
+          updated_at?: string
+        }
+        Update: {
+          actual_hours?: number | null
+          completed_at?: string | null
+          created_at?: string
+          deadline?: string | null
+          description?: string | null
+          estimated_hours?: number | null
+          id?: string
+          labels?: string[]
+          owner_id?: string
+          position?: number
+          priority?: string
+          project_id?: string | null
+          status?: string
+          title?: string
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "tasks_project_id_fkey"
+            columns: ["project_id"]
+            isOneToOne: false
+            referencedRelation: "projects"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
     }
     Views: {
       [_ in never]: never
